@@ -1,0 +1,258 @@
+/* src/App.css */
+
+/* Estilos globales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #f0f2f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #333;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar .nav-link {
+  color: #f8f9fa;
+  margin-right: 1.5rem;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+  color: #ff6b6b;
+  transform: scale(1.1);
+}
+
+.navbar .nav-link.active {
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+.navbar-brand {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Carrusel */
+.carousel {
+  margin-top: 20px;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.5s ease;
+}
+
+.carousel-item img:hover {
+  transform: scale(1.03);
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-caption h3 {
+  color: #ff6b6b;
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.carousel-caption p {
+  color: #f8f9fa;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Contenedor de productos */
+.productos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.productos-container .filtros {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.filtros input, .filtros select {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.filtros input:focus, .filtros select:focus {
+  border-color: #ff6b6b;
+  outline: none;
+}
+
+.filtros input {
+  width: 60%;
+}
+
+.filtros select {
+  width: 35%;
+}
+
+/* Tarjetas de productos */
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card-producto {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-producto:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.card-producto img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.card-producto h3 {
+  font-size: 1.6rem;
+  color: #333;
+  margin: 0.5rem;
+}
+
+.card-producto p {
+  padding: 0 1rem;
+  font-size: 1rem;
+  color: #666;
+}
+
+.card-producto p:last-child {
+  color: #333;
+  font-weight: bold;
+}
+
+.card-producto .precio {
+  color: #ff6b6b;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+
+/* Estilos de formulario */
+.contacto-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.contacto-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.contacto-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contacto-container input, 
+.contacto-container textarea, 
+.contacto-container button {
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+.contacto-container input:focus, 
+.contacto-container textarea:focus {
+  border-color: #ff6b6b;
+  outline: none;
+}
+
+.contacto-container button {
+  background-color: #ff6b6b;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.contacto-container button:hover {
+  background-color: #e63946;
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: #f8f9fa;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid #444;
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* Efectos de hover */
+a, .nav-link {
+  color: #f8f9fa;
+  transition: color 0.3s ease;
+}
+
+a:hover, .nav-link:hover {
+  color: #ff6b6b;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.carousel-item {
+  animation: fadeIn 1s ease;
+}
