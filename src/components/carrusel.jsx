@@ -1,5 +1,3 @@
-// src/components/Carrusel/index.js
-
 import Carousel from 'react-bootstrap/Carousel';
 
 export const Carrusel = ({ productos }) => {

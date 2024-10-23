@@ -1,4 +1,3 @@
-// src/pages/Producto/index.jsx
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../../api';
@@ -8,7 +7,6 @@ export default function Producto() {
   const [producto, setProducto] = useState(null);
 
   useEffect(() => {
-    // Cargar los detalles del producto desde la API
     getProductById(id)
       .then((response) => setProducto(response.data))
       .catch((error) => console.error('Error fetching product details:', error));

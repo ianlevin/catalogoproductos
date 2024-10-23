@@ -1,10 +1,12 @@
-// src/App.js
 import './App.css';
 import { Carrusel } from './components/carrusel';
-import productos from './data/productos';
+import { useContext } from 'react';
+import { AppContext } from './context/AppContext';
 
 function App() {
-  const randomProducts = productos.sort(() => 0.5 - Math.random()).slice(0, 6);
+  const { products } = useContext(AppContext); 
+
+  const randomProducts = products.sort(() => 0.5 - Math.random()).slice(0, 6);
 
   return (
     <div className="App">

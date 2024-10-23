@@ -1,4 +1,3 @@
-// src/context/AppContext.js
 import { createContext, useState, useEffect } from 'react';
 import { getCategories, getProducts } from '../api';
 
