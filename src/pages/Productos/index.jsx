@@ -1,22 +1,47 @@
 // src/pages/Productos/index.jsx
-
-import { useState } from 'react';
-import productos from '../../data/productos';
+import { useState, useContext } from 'react';
+import { AppContext } from '../../context/AppContext';
 import { CardProducto } from '../../components/CardProducto';
+import { getProducts } from '../../api';
 
 const Productos = () => {
+  const { products, categories, setProducts } = useContext(AppContext);
   const [searchTerm, setSearchTerm] = useState('');
-  const [category, setCategory] = useState(''); // Estado para el filtro de categoría
+  const [category, setCategory] = useState('');
 
-  // Filtrar productos
-  const filteredProducts = productos.filter((producto) => {
-    const matchesSearch = producto.name.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = category ? producto.category === category : true;
+  // Filtrar productos localmente
+  const filteredProducts = products.filter((producto) => {
+    const matchesSearch = producto.title.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = category ? producto.category.toLowerCase() === category.toLowerCase() : true;
     return matchesSearch && matchesCategory;
   });
 
-  // Obtener categorías únicas para el filtro
-  const categories = [...new Set(productos.map((producto) => producto.category))];
+  // Cambiar categoría y cargar productos filtrados
+  const handleCategoryChange = async (e) => {
+    const selectedCategory = e.target.value;
+    setCategory(selectedCategory);
+
+    if (selectedCategory) {
+      // Filtrar productos por categoría usando la API
+      try {
+        const response = await getProducts(20, 0, 'title,price,category');
+        const filteredByCategory = response.data.products.filter(
+          (p) => p.category.toLowerCase() === selectedCategory.toLowerCase()
+        );
+        setProducts(filteredByCategory);
+      } catch (error) {
+        console.error('Error fetching filtered products:', error);
+      }
+    } else {
+      // Cargar todos los productos si no hay filtro
+      try {
+        const response = await getProducts(20);
+        setProducts(response.data.products);
+      } catch (error) {
+        console.error('Error fetching all products:', error);
+      }
+    }
+  };
 
   return (
     <div className="productos-container">
@@ -28,7 +53,7 @@ const Productos = () => {
           onChange={(e) => setSearchTerm(e.target.value)} 
         />
         
-        <select onChange={(e) => setCategory(e.target.value)} value={category}>
+        <select onChange={handleCategoryChange} value={category}>
           <option value="">Todas las Categorías</option>
           {categories.map((cat, index) => (
             <option key={index} value={cat}>{cat}</option>
