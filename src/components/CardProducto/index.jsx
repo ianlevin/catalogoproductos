@@ -1,15 +1,22 @@
 import { useContext } from 'react';
 import { AppContext } from '../../context/AppContext'; 
+import { useNavigate } from 'react-router-dom'; 
 
 export const CardProducto = ({ producto }) => {
   const { addToCart } = useContext(AppContext); 
+  const navigate = useNavigate(); 
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e) => {
+    e.stopPropagation(); 
     addToCart(producto); 
   };
 
+  const handleNavigate = () => {
+    navigate(`/productos/${producto.id}`); 
+  };
+
   return (
-    <div className="card-producto">
+    <div className="card-producto" onClick={handleNavigate}>
       <img src={producto.imageUrl} alt={producto.title} />
       <h3>{producto.title}</h3>
       <p>${producto.price}</p>
@@ -19,3 +26,5 @@ export const CardProducto = ({ producto }) => {
     </div>
   );
 };
+
+
