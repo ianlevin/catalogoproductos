@@ -1,26 +1,21 @@
-import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AppContext } from '../../context/AppContext'; 
 
 export const CardProducto = ({ producto }) => {
-  const navigate = useNavigate();
-  const imageUrl = producto.images && producto.images.length > 0 ? producto.images[0] : null;
+  const { addToCart } = useContext(AppContext); 
 
-  const handleClick = () => {
-    navigate(`/productos/${producto.id}`);
+  const handleAddToCart = () => {
+    addToCart(producto); 
   };
 
   return (
-    <div className="card-producto" onClick={handleClick} style={{ cursor: 'pointer' }}>
-      {imageUrl ? (
-        <img 
-          src={imageUrl} 
-          alt={producto.title} 
-        />
-      ) : (
-        <div className="no-image">Imagen no disponible</div>
-      )}
+    <div className="card-producto">
+      <img src={producto.imageUrl} alt={producto.title} />
       <h3>{producto.title}</h3>
-      <p>Precio: ${producto.price}</p>
-      <p>Categoría: {producto.category}</p>
+      <p>${producto.price}</p>
+      <button onClick={handleAddToCart}>
+        + Agregar al Carrito
+      </button>
     </div>
   );
 };
