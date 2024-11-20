@@ -2,12 +2,11 @@ import axios from 'axios';
 
 const API_BASE_URL = 'https://dummyjson.com';
 
-export const getProducts = (limit = 0, skip = 0, select = 'title,price,image,category') => {
+export const getProducts = (limit = 0, skip = 0) => {
   return axios.get(`${API_BASE_URL}/products`, {
-    params: { limit, skip, select }
+    params: { limit, skip }
   });
 };
-
 
 export const getCategories = () => {
   return axios.get(`${API_BASE_URL}/products/categories`);

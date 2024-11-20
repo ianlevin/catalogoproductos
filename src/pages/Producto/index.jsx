@@ -18,7 +18,7 @@ export default function Producto() {
 
   return (
     <div className="producto-detalle">
-      <img src={producto.image} alt={producto.title} className="producto-imagen" />
+      <img src={producto.images[0]} alt={producto.title} className="producto-imagen" />
       <div className="producto-info">
         <h2>{producto.title}</h2>
         <p>{producto.description}</p>

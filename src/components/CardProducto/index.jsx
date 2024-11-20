@@ -17,7 +17,7 @@ export const CardProducto = ({ producto }) => {
 
   return (
     <div className="card-producto" onClick={handleNavigate}>
-      <img src={producto.imageUrl} alt={producto.title} />
+      <img src={producto.images[0]} alt={producto.title} />
       <h3>{producto.title}</h3>
       <p>${producto.price}</p>
       <button onClick={handleAddToCart}>
@@ -26,5 +26,3 @@ export const CardProducto = ({ producto }) => {
     </div>
   );
 };
-
-

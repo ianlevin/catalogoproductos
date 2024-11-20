@@ -6,7 +6,7 @@ export const Carrusel = ({ productos }) => {
       {productos.map((producto) => (
         <Carousel.Item key={producto.id}>
           <img
-            src={producto.image} 
+            src={producto.images[0]} 
             alt={producto.name}
             className="d-block w-100"
             style={{ maxHeight: '400px', objectFit: 'contain' }} 

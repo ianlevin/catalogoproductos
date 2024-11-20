@@ -14,7 +14,7 @@ const Carrito = () => {
         {cart.length > 0 ? (
           cart.map((producto) => (
             <div key={producto.id} className="producto-carrito">
-              <img src={producto.image} alt={producto.title} />
+              <img src={producto.images[0]} alt={producto.title} />
               <h3>{producto.title}</h3>
               <p>Precio: ${producto.price}</p>
               <button onClick={() => removeFromCart(producto.id)}>Eliminar</button>
@@ -26,11 +26,12 @@ const Carrito = () => {
       </div>
 
       <div className="total-compra">
-        <h3>Total: ${total}</h3>
-        <Link to="/checkout">
-          <button>Ir al checkout</button>
-        </Link>
-      </div>
+  <h3>Total: ${total.toFixed(2)}</h3> {/* Aquí acortamos a 2 decimales */}
+  <Link to="/checkout">
+    <button>Ir al checkout</button>
+  </Link>
+</div>
+
     </div>
   );
 };
